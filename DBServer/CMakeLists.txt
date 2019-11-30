@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 2.8)
+project(DBServer)
+add_definitions(-D__LINUX__ -D__LINUX64)
+include_directories(../Common/mariacpp C:/Program Files/MariaDB 10.4/include/mysql ../Dependencies ../Common ../Dependencies/window_libevent/include ../Common/ServerComm ../DBServer/NodeNet ../Dependencies/protobuf/src ../Dependencies/mariacpp ../Common/ServerProto ../Common/NFComm ../MyNet/Common ../ ./)
+link_directories(../Dependencies/libs ../Dependencies/mylibs)
+set(SOURCE_FILE Connection/ConnectionPool.cpp DB.cpp Main.cpp Connection/MyConnection.cpp NodeNet/DBNodeClient.cpp NodeNet/DBNodeServer.cpp NodeNet/DBServerThread.cpp)
+
+set(CMAKE_VERBOSE_MAKEFILE on)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -o2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+set(CMAKE_C_COMPILER "gcc")
+set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+        
+add_executable(DBServer ${SOURCE_FILE})
+target_link_libraries(DBServer  Common.a event_core.a event_extra.a event_openssl.a libprotobufd.a libprotobuf-lited.a libprotocd.a event.a mysqlservices.a libmariadb.a mariadbclient.a hiredis_d.a mysqlclient boost_random boost_system boost_thread boost_filesystem boost_date_time boost_locale boost_iostreams boost_random dl stdc++fs pthread event_pthreads)

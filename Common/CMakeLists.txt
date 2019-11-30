@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 2.8)
+project(Common)
+add_definitions(-D__LINUX__ -D__LINUX64)
+include_directories(../ThirdPart/hiredis/hiredis_win/hiredis C:/Program Files/MariaDB 10.4/include/mysql ../Common/mariacpp ../Common/easylogging ../Dependencies/protobuf/src ../Dependencies/jsoncpp ./ ../ ../Dependencies/window_libevent/include ../Dependencies/common ../Dependencies ../Common/ServerComm ../Common/NFComm ../Common)
+link_directories()
+set(SOURCE_FILE CityHash/city.cc ClientProto/Chat.pb.cc ClientProto/ClientPublic.pb.cc DesignTable/TableMgr.cpp easylogging/easylogging++.cc redis/GameRedis.cpp redis/RedisOp.cpp jsoncpp/jsoncpp.cpp mariacpp/src/bind.cpp mariacpp/src/connection.cpp mariacpp/src/exception.cpp mariacpp/src/lib.cpp mariacpp/src/ma_time.c mariacpp/src/prepared_stmt.cpp mariacpp/src/resultset.cpp mariacpp/src/time.cpp mariacpp/src/uri.cpp NFComm/NFNetPlugin/NetClientBase.cpp NFComm/NFNetPlugin/NetServerBase.cpp NFComm/NFNetPlugin/NFHttpClient.cpp NFComm/NFNetPlugin/NFHttpClientModule.cpp NFComm/NFNetPlugin/NFHttpServer.cpp NFComm/NFNetPlugin/NFHttpServerModule.cpp NFComm/NFNetPlugin/NFNet.cpp NFComm/NFNetPlugin/NFNetClientModule.cpp NFComm/NFNetPlugin/NFNetModule.cpp Packet/Packet.cpp Packet/PacketMgr.cpp Packet/Player.cpp ServerComm/Config.cpp ServerComm/ThreadBase.cpp ServerComm/ThreadPool.cpp ServerComm/Timer.cpp ServerComm/Util.cpp ServerProto/GameDB.pb.cc ServerProto/NFNodeNet.pb.cc ServerProto/ServerPublic.pb.cc)
+
+set(CMAKE_VERBOSE_MAKEFILE on)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -o2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+set(CMAKE_C_COMPILER "gcc")
+set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+        
+add_library(Common ${SOURCE_FILE})
+target_link_libraries(Common  )

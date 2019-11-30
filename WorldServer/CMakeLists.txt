@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 2.8)
+project(WorldServer)
+add_definitions(-D__LINUX__ -D__LINUX64)
+include_directories(../WorldServer/NodeNet ../Dependencies/protobuf/src ../Dependencies/libevent/include ../Common/ServerProto ../Common/ServerComm ../Common/NFComm ../Common ../ ./)
+link_directories(../Dependencies/mylibs ../Dependencies/libs)
+set(SOURCE_FILE Main.cpp NodeNet/WorldNodeClient.cpp NodeNet/WorldNodeServer.cpp NodeNet/WorldServerThread.cpp World.cpp)
+
+set(CMAKE_VERBOSE_MAKEFILE on)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -o2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+set(CMAKE_C_COMPILER "gcc")
+set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+        
+add_executable(WorldServer ${SOURCE_FILE})
+target_link_libraries(WorldServer  Common.a event_core.a event_extra.a event_openssl.a libprotobufd.a libprotobuf-lited.a libprotocd.a event.a mysqlclient boost_random boost_system boost_thread boost_filesystem boost_date_time boost_locale boost_iostreams boost_random dl stdc++fs pthread event_pthreads)

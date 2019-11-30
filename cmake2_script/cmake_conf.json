@@ -1,0 +1,19 @@
+{
+    "debug": {
+        "definitions": "",
+        "link_directories": "",
+        "link_libraries": ""
+    },
+    "release": {
+        "definitions": "",
+        "link_directories": "",
+        "link_libraries": ""
+    },
+    "common": {
+        "library": "",
+        "definitions": "-D__LINUX__",
+        "include_directories": "../ThirdPart/hiredis/hiredis_linux/hiredis  ../Common/mariacpp ../Common/easylogging ../Dependencies/protobuf/src ../Dependencies/jsoncpp ./ ../ ../Dependencies/linux_libevent/include ../Dependencies/common ../Dependencies ../Common/ServerComm ../Common/NFComm ../Common",
+        "link_directories": "",
+        "link_libraries": ""
+    }
+}
